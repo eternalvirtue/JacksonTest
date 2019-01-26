@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>試算I/Fサンプル</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"/>
+    <style type="text/css">
+        .input {width:10em;}
+        .checkbox {line-height:2;}
+        .inner-text {line-height:2;}
+        .money-column { text-align:right; }
+    </style>
+</head>
+<body>
+    <section class = "section">
+         <div class = "container">
+            <span class = "title">試算I/Fサンプル なんちゃって損保メディカル系</span><br><br>
+            <form id="form" method="post" accept-charset="utf-8" return false>
+                <span class = "is-size-5">契約情報</span>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">証券番号</label></div>
+                    <div class="field-body"><input class ="input" name = "policyNo" type="text" placeholder="実際には自動採番だろうけど" value="M123456789"></div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">保険期間</label></div>
+                    <div class="field-body">
+                        <input class="input" type="text" id="inceptDate" name="inceptDate" value="20190101">
+                        <span class = "is-size-6 inner-text">〜</span>
+                        <input class="input" type="text" id="expireDate" name="expireDate" value="20200101">
+                    </div>
+                </div>
+                <span class = "is-size-5">契約者兼被保険者情報</span>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">契約者漢字(姓・名)</label></div>
+                    <div class="field-body">
+                        <input class="input" type="text" id="lastNameKJ" name="lastNameKJ" value="運呼">
+                        <span class = "is-size-6 inner-text">・</span>
+                        <input class="input" type="text" id="firstNameKJ" name="firstNameKJ" value="太郎">
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">契約者カナ(姓・名)</label></div>
+                    <div class="field-body">
+                        <input class="input" type="text" id="lastNameKN" name="lastNameKN" value="ウンコ">
+                        <span class = "is-size-6 inner-text">・</span>
+                        <input class="input" type="text" id="firstNameKN" name="firstNameKN" value="タロウ">
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">生年月日</label></div>
+                    <div class="field-body">
+                        <input class="input" type="text" id="birthDay" name="birthDay" value="19900101">
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">性別</label></div>
+                    <div class="field-body">
+                        <input class="radio" type="radio" id="sex" name="sex" value="1"><span class = "is-size-6 inner-text">男性&nbsp;</span>
+                        <input class="radio" type="radio" id="sex" name="sex" value="2" checked><span class = "is-size-6 inner-text">女性</span>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">郵便番号</label></div>
+                    <div class="field-body">
+                        <input class="input" type="text" id="zipNo" name="zipNo" value="1000001">
+                    </div>
+                </div>
+                 <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">住所</label></div>
+                    <div class="field-body">
+                        <input class="input" type="text" id="addressPrefecture" name="addressPrefecture" value="東京都">
+                        <span class = "is-size-6 inner-text">・</span>
+                        <input class="input" type="text" id="addressCity" name="addressCity" value="千代田区千代田">
+                        <span class = "is-size-6 inner-text">・</span>
+                        <input class="input" type="text" id="addressTown" name="addressTown" value="１番１号">
+                        <span class = "is-size-6 inner-text">・</span>
+                        <input class="input" type="text" id="addressBuild" name="addressBuild" value="">
+                    </div>
+                </div>
+                 <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">電話番号</label></div>
+                    <div class="field-body">
+                        <input class="input" type="text" id="telNo" name="telNo" value="03-0000-1111">
+                    </div>
+                </div>
+                <span class = "is-size-5">保障情報</span>
+                 <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">特約</label></div>
+                    <div class="field-body">
+                        <label class="checkbox"><input class="checkbox" type="checkbox" id="rider01" name="rider" value="01" checked>インターネット特約</label>
+                        <span class = "is-size-5 inner-text">&nbsp;</span>
+                        <label class="checkbox"><input class="checkbox" type="checkbox" id="rider02" name="rider" value="02" checked>契約開始90日前特約</label>
+                    </div>
+                </div>
+                 <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">入院日額</label></div>
+                    <div class="field-body">
+                        <input type="hidden" id="coverageCode001" name="coverageCode001" value="001">
+                        <span class = "is-size-6 inner-text">保険金額&nbsp;</span>
+                        <input class="input money-column" type="text" id="coverageAmount001" name="coverageAmount001" value="5">
+                        <span class = "is-size-6 inner-text">千円　保険料&nbsp;</span>
+                        <input class="input money-column" type="text" disabled id="coveragePrem001" name="coveragePrem001" value="">
+                        <span class = "is-size-6 inner-text">円</span>
+                    </div>
+                </div>
+                 <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">手術</label></div>
+                    <div class="field-body">
+                        <input type="hidden" id="coverageCode002" name="coverageCode002" value="002">
+                        <span class = "is-size-6 inner-text">保険金額&nbsp;</span>
+                        <input class="input money-column" type="text" id="coverageAmount002" name="coverageAmount002" value="50">
+                        <span class = "is-size-6 inner-text">千円　保険料&nbsp;</span>
+                        <input class="input money-column" type="text" disabled id="coveragePrem002" name="coveragePrem002" value="">
+                        <span class = "is-size-6 inner-text">円</span>
+                    </div>
+                </div>
+                 <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">がん放射線治療</label></div>
+                    <div class="field-body">
+                        <input type="hidden" id="coverageCode003" name="coverageCode003" value="003">
+                        <span class = "is-size-6 inner-text">保険金額&nbsp;</span>
+                        <input class="input money-column" type="text" id="coverageAmount003" name="coverageAmount003" value="50">
+                        <span class = "is-size-6 inner-text">千円　保険料&nbsp;</span>
+                        <input class="input money-column" type="text" disabled id="coveragePrem003" name="coveragePrem003" value="">
+                        <span class = "is-size-6 inner-text">円</span>
+                    </div>
+                </div>
+                 <div class="field is-horizontal">
+                    <div class="field-label is-normal"><label class = "label">先進医療</label></div>
+                    <div class="field-body">
+                        <input type="hidden" id="coverageCode004" name="coverageCode003" value="004">
+                        <span class = "is-size-6 inner-text">保険金額&nbsp;</span>
+                        <input class="input money-column" type="text" id="coverageAmount004" name="coverageAmount004" value="20000">
+                        <span class = "is-size-6 inner-text">千円　保険料&nbsp;</span>
+                        <input class="input money-column" type="text" disabled id="coveragePrem004" name="coveragePrem004" value="">
+                        <span class = "is-size-6 inner-text">円</span>
+                    </div>
+                </div>
+            </form>
+            <button class="button is-link is-outlined" id="calcButton">検索</button>
+            <div id="result"></div>
+            <ul id="errorCode"></ul>
+            <div id="responseData"></div>
+         </div>
+    </section>
+    <script type="text/javascript">
+        $(function(){
+            // Ajax button click
+            $('#calcButton').on('click',function(){
+                $('#result').empty();
+                $('#errorCode').empty();
+                $('#responseData').empty();
+                // 多重送信を防ぐため通信完了までボタンをdisableにする
+                var button = $(this);
+                button.attr("disabled", true);
+                $('#result').html("処理中...");
+                // 各フィールドから値を取得してJSONデータを作成
+                var data = {
+                };
+
+                // テキスト項目はそのまま取得してセット
+                $('form input, select').each(
+                    function(index) {
+                        var input = $(this);
+                        var name = input.attr('name') ;
+                        if (name !== "rider" && name !== "sex" && name.lastIndexOf("coverage", 0) !== 0 ) {
+                            data[name] = input.val();
+                        }
+                    }
+                );
+                
+                // 性別は選択した値
+                data.sex = $("#sex:checked").val();
+                
+                // 特約はチェックの入ったものだけ取得し、セット
+                var riders=[];
+                $("[name='rider']:checked").each(function(){
+                    riders.push(this.value);
+                });
+                data.rider = riders;
+
+                //  担保は個別に色々ゴリゴリ入りそうなのでベタ打ち
+                var coverage001 = {
+                    code: $("#coverageCode001").val(),
+                    amount: $("#coverageAmount001").val()
+                };
+                var coverage002 = {
+                    code: $("#coverageCode002").val(),
+                    amount: $("#coverageAmount002").val()
+                };
+                var coverage003 = {
+                    code: $("#coverageCode003").val(),
+                    amount: $("#coverageAmount003").val()
+                };
+                var coverage004 = {
+                    code: $("#coverageCode004").val(),
+                    amount: $("#coverageAmount004").val()
+                };
+                data.coverage = [coverage001, coverage002, coverage003, coverage004];
+
+                $.ajax({
+                    url:'http://localhost:8080/JacksonTest/API',
+                    type:'POST',
+                    data:JSON.stringify(data),
+                    contentType: 'application/json', 
+                    dataType: "json", 
+                })
+                .done( (data) => { // 成功時
+                    // レスポンスデータ全体を見たい場合はコメントを外す
+                    // $('#responseData').html(JSON.stringify(data));
+                    $('#result').empty();
+                    if (data.resultCode == '001') {
+                        $('#result').html("正常終了");
+                    } else { 
+                        $('#result').html("エラーが発生しました");
+                    }
+                    $(data.errorCode).each(function() {
+                        console.log("succeed");
+                        $('#errorCode').append($('<li></li>').append($('<div></div>').text(this)));
+                    });
+                    if (data.coverage !== undefined) {
+                        if (data.coverage[0] !== undefined) {
+                            $("#coveragePrem001").val(data.coverage[0].prem);
+                        }
+                        if (data.coverage[1] !== undefined) {
+                            $("#coveragePrem002").val(data.coverage[1].prem);
+                        }
+                        if (data.coverage[2] !== undefined) {
+                            $("#coveragePrem003").val(data.coverage[2].prem);
+                        }
+                        if (data.coverage[3] !== undefined) {
+                            $("#coveragePrem004").val(data.coverage[3].prem);
+                        }
+                    }
+                })
+                .fail( (data) => { // 失敗時
+                    $('#responseData').html("通信に失敗したか、サービスに影響のあるエラーが発生しました");
+                    $('responseData').html(data);
+                })
+                .always( (data) => { // 常時
+                    button.attr("disabled", false);  // ボタンを再び enableにする
+                });
+            });
+        });
+    </script>
+</body>
+</html>
