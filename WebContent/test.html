@@ -98,7 +98,7 @@
                     <div class="field-body">
                         <input type="hidden" id="coverageCode001" name="coverageCode001" value="001">
                         <span class = "is-size-6 inner-text">保険金額&nbsp;</span>
-                        <input class="input money-column" type="text" id="coverageAmount001" name="coverageAmount001" value="5">
+                        <input class="input money-column" type="number" id="coverageAmount001" name="coverageAmount001" value="5">
                         <span class = "is-size-6 inner-text">千円　保険料&nbsp;</span>
                         <input class="input money-column" type="text" disabled id="coveragePrem001" name="coveragePrem001" value="">
                         <span class = "is-size-6 inner-text">円</span>
@@ -109,7 +109,7 @@
                     <div class="field-body">
                         <input type="hidden" id="coverageCode002" name="coverageCode002" value="002">
                         <span class = "is-size-6 inner-text">保険金額&nbsp;</span>
-                        <input class="input money-column" type="text" id="coverageAmount002" name="coverageAmount002" value="50">
+                        <input class="input money-column" type="number" id="coverageAmount002" name="coverageAmount002" value="50">
                         <span class = "is-size-6 inner-text">千円　保険料&nbsp;</span>
                         <input class="input money-column" type="text" disabled id="coveragePrem002" name="coveragePrem002" value="">
                         <span class = "is-size-6 inner-text">円</span>
@@ -120,7 +120,7 @@
                     <div class="field-body">
                         <input type="hidden" id="coverageCode003" name="coverageCode003" value="003">
                         <span class = "is-size-6 inner-text">保険金額&nbsp;</span>
-                        <input class="input money-column" type="text" id="coverageAmount003" name="coverageAmount003" value="50">
+                        <input class="input money-column" type="number" id="coverageAmount003" name="coverageAmount003" value="50">
                         <span class = "is-size-6 inner-text">千円　保険料&nbsp;</span>
                         <input class="input money-column" type="text" disabled id="coveragePrem003" name="coveragePrem003" value="">
                         <span class = "is-size-6 inner-text">円</span>
@@ -131,7 +131,7 @@
                     <div class="field-body">
                         <input type="hidden" id="coverageCode004" name="coverageCode003" value="004">
                         <span class = "is-size-6 inner-text">保険金額&nbsp;</span>
-                        <input class="input money-column" type="text" id="coverageAmount004" name="coverageAmount004" value="20000">
+                        <input class="input money-column" type="number" id="coverageAmount004" name="coverageAmount004" value="20000">
                         <span class = "is-size-6 inner-text">千円　保険料&nbsp;</span>
                         <input class="input money-column" type="text" disabled id="coveragePrem004" name="coveragePrem004" value="">
                         <span class = "is-size-6 inner-text">円</span>
@@ -183,19 +183,19 @@
                 //  担保は個別に色々ゴリゴリ入りそうなのでベタ打ち
                 var coverage001 = {
                     code: $("#coverageCode001").val(),
-                    amount: $("#coverageAmount001").val()
+                    amount: parseInt($("#coverageAmount001").val())
                 };
                 var coverage002 = {
                     code: $("#coverageCode002").val(),
-                    amount: $("#coverageAmount002").val()
+                    amount: parseInt($("#coverageAmount002").val())
                 };
                 var coverage003 = {
                     code: $("#coverageCode003").val(),
-                    amount: $("#coverageAmount003").val()
+                    amount: parseInt($("#coverageAmount003").val())
                 };
                 var coverage004 = {
                     code: $("#coverageCode004").val(),
-                    amount: $("#coverageAmount004").val()
+                    amount: parseInt($("#coverageAmount004").val())
                 };
                 data.coverage = [coverage001, coverage002, coverage003, coverage004];
 
